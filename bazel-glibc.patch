@@ -1,0 +1,12 @@
+--- bazel-1.2.1/third_party/grpc/src/core/lib/gpr/log_linux.cc.orig	1980-01-01 00:00:00.000000000 +0100
++++ bazel-1.2.1/third_party/grpc/src/core/lib/gpr/log_linux.cc	2019-12-07 15:30:52.746411671 +0100
+@@ -40,7 +40,9 @@
+ #include <time.h>
+ #include <unistd.h>
+ 
++#ifndef __USE_GNU
+ static long gettid(void) { return syscall(__NR_gettid); }
++#endif
+ 
+ void gpr_log(const char* file, int line, gpr_log_severity severity,
+              const char* format, ...) {

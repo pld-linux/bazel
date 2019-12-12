@@ -1,0 +1,18 @@
+--- bazel-1.2.1/third_party/BUILD.orig	1980-01-01 00:00:00.000000000 +0100
++++ bazel-1.2.1/third_party/BUILD	2019-12-12 19:51:34.491328309 +0100
+@@ -525,13 +525,13 @@
+     "//src/conditions:darwin": "*.so *.dll",
+     "//src/conditions:darwin_x86_64": "*.so *.dll",
+     "//src/conditions:linux_x86_64": "*.jnilib *.dll",
+-    # The .so file is an x86 one, so we can just remove it if the CPU is not x86
++    # The .so file is an x86_64 one, so we can just remove it if the CPU is not x86_64
+     "//src/conditions:arm": "*.so *.jnilib *.dll",
+     "//src/conditions:linux_aarch64": "*.so *.jnilib *.dll",
+     "//src/conditions:linux_ppc": "*.so *.jnilib *.dll",
+     # Play it safe -- better have a big binary than a slow binary
+     # zip -d does require an argument. Supply something bogus.
+-    "//conditions:default": "*.bogusextension",
++    "//conditions:default": "*.so *.jnilib *.dll",
+ })
+ 
+ # Remove native libraries that are for a platform different from the one we are
