@@ -20,6 +20,8 @@ BuildRequires:	unzip
 BuildRequires:	zip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define		_noautostrip		.*%{_bindir}/bazel
+
 %description
 Build and test software of any size, quickly and reliably.
 
